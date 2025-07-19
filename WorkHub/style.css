@@ -1,0 +1,208 @@
+:root {
+  --bg-color: #f5f5f5;
+  --card-bg: #ffffff;
+  --text-color: #222;
+  --accent-color: #fca311;
+  --muted-text: #555;
+}
+
+[data-theme="dark"] {
+  --bg-color: #1a1a2e;
+  --card-bg: #25274d;
+  --text-color: #ffffff;
+  --accent-color: #16c79a;
+  --muted-text: #cccccc;
+}
+
+/* Global styles */
+body {
+  margin: 0;
+  font-family: sans-serif;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+}
+
+/* Navbar */
+.navbar {
+  background-color: var(--card-bg);
+  padding: 15px 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 999;
+}
+
+.navbar-logo {
+  font-size: 22px;
+  font-weight: bold;
+  color: var(--accent-color);
+  text-decoration: none;
+}
+
+.logout-btn {
+  color: white;
+  background: crimson;
+  padding: 8px 14px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: 0.2s;
+}
+
+.logout-btn:hover {
+  background: rgb(200, 0, 0);
+}
+
+/* Main Dashboard Layout */
+.admin-dashboard {
+  padding-top: 100px;
+  text-align: center;
+}
+
+.admin-dashboard h1 {
+  font-size: 28px;
+  margin-bottom: 30px;
+  color: var(--text-color);
+}
+
+/* Card Grid Layout */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 20px;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 20px;
+  position: relative;
+}
+
+/* Admin function cards */
+.admin-card {
+  background: var(--card-bg);
+  padding: 25px;
+  border-radius: 12px;
+  text-align: left;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  text-decoration: none;
+  color: var(--text-color);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.admin-card h2 {
+  margin-top: 0;
+  font-size: 20px;
+}
+
+.admin-card p {
+  font-size: 15px;
+  margin-top: 8px;
+  color: var(--muted-text);
+}
+
+/* Blur effect on other cards when hovering one */
+.card-grid:hover .admin-card {
+  filter: blur(3px);
+  transform: scale(0.98);
+  transition: filter 0.3s ease, transform 0.3s ease;
+}
+
+.card-grid .admin-card:hover {
+  filter: none !important;
+  transform: scale(1.02);
+  z-index: 2;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+}
+
+/* Form styles (optional for login/register pages) */
+.card {
+  background-color: var(--card-bg);
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.1);
+  width: 300px;
+  margin: 100px auto;
+}
+
+input, button {
+  width: 100%;
+  margin: 0.5rem 0;
+  padding: 0.5rem;
+  border: none;
+  border-radius: 5px;
+}
+
+button {
+  background-color: var(--accent-color);
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+/* Topbar (optional header) */
+.topbar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 60px;
+  background-color: var(--card-bg);
+  display: flex;
+  align-items: center;
+  padding-left: 20px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  z-index: 1000;
+}
+
+.logo {
+  font-size: 20px;
+  font-weight: bold;
+  color: var(--accent-color);
+  text-decoration: none;
+}
+
+#theme-toggle {
+  background: transparent;
+  font-size: 20px;
+  cursor: pointer;
+  border: none;
+  color: var(--accent-color, #00b894);
+  transition: transform 0.2s ease;
+}
+
+#theme-toggle:hover {
+  transform: scale(1.2);
+}
+
+.logout-btn {
+  margin-right: 60px;
+}
+
+
+.navbar {
+  justify-content: space-between;
+}
+
+/* Admin function cards with hover blur effect */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 20px;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 20px;
+  position: relative;
+}
+
+
+
+.card-grid .admin-card:hover {
+  filter: none !important;
+  transform: scale(1.02);
+  z-index: 2;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+}

@@ -24,10 +24,96 @@ $users = $pdo->query("SELECT * FROM users WHERE is_approved = 0")->fetchAll();
 <html data-theme="light">
 <head>
   <title>Approve Users - WorkHub</title>
-  <link rel="stylesheet" href="style.css">
-  <script src="theme-toggle.js" defer></script>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #0b0b2d;
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .navbar {
+      background-color: #191946;
+      padding: 1rem 2rem;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .navbar h1 {
+      margin: 0;
+      color: #00ffcc;
+    }
+
+    .card {
+      background-color: #191946;
+      padding: 2rem;
+      border-radius: 15px;
+      margin-top: 2rem;
+      width: 90%;
+      max-width: 800px;
+      box-shadow: 0 0 10px rgba(0,255,200,0.2);
+    }
+
+    h2 {
+      color: #ffffff;
+      text-align: center;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 1rem;
+    }
+
+    th, td {
+      padding: 10px;
+      text-align: center;
+      color: #fff;
+    }
+
+    th {
+      color: #ffffff;
+      font-weight: bold;
+    }
+
+    a {
+      text-decoration: none;
+      color: #00ffcc;
+    }
+
+    .btn {
+      padding: 6px 12px;
+      background-color: #42766863;
+      border: none;
+      border-radius: 5px;
+      color: white;
+      cursor: pointer;
+      margin: 2px;
+      font-size: 0.9rem;
+    }
+
+    .btn:hover {
+      background-color: #00b386;
+    }
+
+    p a {
+      color: #00ffcc;
+    }
+  </style>
 </head>
 <body>
+  <div class="navbar">
+    <h1>WorkHub</h1>
+    <div>
+      <img src="profile.jpg" alt="Profile" style="width:30px; height:30px; border-radius:50%;">
+    </div>
+  </div>
+
   <div class="card">
     <h2>Pending Users</h2>
     <?php if (count($users) === 0): ?>
@@ -35,21 +121,23 @@ $users = $pdo->query("SELECT * FROM users WHERE is_approved = 0")->fetchAll();
     <?php else: ?>
       <table>
         <tr>
-          <th>Name</th><th>Email</th><th>Actions</th>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Actions</th>
         </tr>
         <?php foreach ($users as $user): ?>
           <tr>
             <td><?= htmlspecialchars($user['name']) ?></td>
             <td><?= htmlspecialchars($user['email']) ?></td>
             <td>
-              <a href="?approve=<?= $user['id'] ?>">✅ Approve</a> | 
-              <a href="?reject=<?= $user['id'] ?>" onclick="return confirm('Reject user?')">❌ Reject</a>
+              <a class="btn" href="?approve=<?= $user['id'] ?>">✅ Approve</a>
+              <a class="btn" href="?reject=<?= $user['id'] ?>" onclick="return confirm('Reject user?')">❌ Reject</a>
             </td>
           </tr>
         <?php endforeach; ?>
       </table>
     <?php endif; ?>
-    <p><a href="admin_dashboard.php">⬅ Back to Dashboard</a></p>
+    <p><a href="admin_dashboard.php">← Back to Dashboard</a></p>
   </div>
 </body>
 </html>

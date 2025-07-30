@@ -2,7 +2,7 @@
   --bg-color: #f5f5f5;
   --card-bg: #ffffff;
   --text-color: #222;
-  --accent-color: #fca311;
+  --accent-color: #fca21100;
   --muted-text: #555;
 }
 
@@ -10,7 +10,7 @@
   --bg-color: #1a1a2e;
   --card-bg: #25274d;
   --text-color: #ffffff;
-  --accent-color: #16c79a;
+  --accent-color: #16c79b00;
   --muted-text: #cccccc;
 }
 
@@ -52,6 +52,7 @@ body {
   text-decoration: none;
   font-weight: bold;
   transition: 0.2s;
+  margin-right: 60px;
 }
 
 .logout-btn:hover {
@@ -105,11 +106,11 @@ body {
 }
 
 /* Blur effect on other cards when hovering one */
-.card-grid:hover .admin-card {
+/* .card-grid:hover .admin-card {
   filter: blur(3px);
   transform: scale(0.98);
   transition: filter 0.3s ease, transform 0.3s ease;
-}
+} */
 
 .card-grid .admin-card:hover {
   filter: none !important;
@@ -143,66 +144,137 @@ button {
   cursor: pointer;
 }
 
-/* Topbar (optional header) */
-.topbar {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 60px;
-  background-color: var(--card-bg);
-  display: flex;
-  align-items: center;
-  padding-left: 20px;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-  z-index: 1000;
+/* Theme toggle button */
+.theme-toggle {
+  background: transparent;
+  border: none;
+  width: 40px;
+  padding: 6px 6px;
+  border-radius:10px;
+  cursor: pointer;
+  font-size: 20px;
+  transition: background 0.3s ease;
+  margin-right: 100px;
+  color: var(--accent-color);
 }
 
-.logo {
-  font-size: 20px;
-  font-weight: bold;
-  color: var(--accent-color);
+.theme-toggle:hover {
+  background: rgba(0,0,0,0.05);
+}
+
+/* Back to dashboard link */
+.back-link {
+  text-decoration: none;
+  font-weight: 500;
+  display: inline-block;
+  margin-top: 15px;
+  transition: color 0.3s ease;
+}
+
+[data-theme='dark'] .back-link {
+  color: #ffffff;
+}
+
+[data-theme='light'] .back-link {
+  color: #000000;
+}
+
+.back-link:hover {
+  opacity: 0.8;
+}
+
+/* General */
+body {
+  margin: 0;
+  font-family: "Segoe UI", sans-serif;
+  background-color: var(--background);
+  color: var(--text);
+}
+
+/* Container and card */
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px 20px;
+}
+
+.card {
+  background-color: var(--card-bg);
+  padding: 2rem;
+  border-radius: 1rem;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+  width: 100%;
+  max-width: 900px;
+}
+
+/* Table */
+.table-container {
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+}
+
+th, td {
+  padding: 0.75rem;
+  text-align: left;
+  border-bottom: 1px solid var(--border);
+}
+
+th {
+  font-weight: 600;
+  color: var(--accent);
+}
+
+/* Buttons */
+button {
+  border: none;
+  padding: 0.5rem 1rem;
+  margin: 0.25rem;
+  border-radius: 8px;
+  cursor: pointer;
+  color: white;
+  font-weight: 500;
+}
+
+.accept {
+  background-color: #2ecc71;
+}
+
+.reject {
+  background-color: #e74c3c;
+}
+
+.modify {
+  background-color: #3498db;
+}
+
+.back-link {
+  display: inline-block;
+  margin-top: 1rem;
+  color: var(--accent);
   text-decoration: none;
 }
 
-#theme-toggle {
-  background: transparent;
-  font-size: 20px;
-  cursor: pointer;
-  border: none;
-  color: var(--accent-color, #00b894);
-  transition: transform 0.2s ease;
+/* Navbar already styled from your current setup */
+
+/* Theme variables (light & dark modes assumed) */
+html[data-theme="light"] {
+  --background: #f0f4f8;
+  --text: #1a1a1a;
+  --card-bg: white;
+  --border: #ccc;
+  --accent: #0066cc;
 }
 
-#theme-toggle:hover {
-  transform: scale(1.2);
-}
-
-.logout-btn {
-  margin-right: 60px;
-}
-
-
-.navbar {
-  justify-content: space-between;
-}
-
-/* Admin function cards with hover blur effect */
-.card-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 20px;
-  max-width: 900px;
-  margin: 0 auto;
-  padding: 0 20px;
-  position: relative;
-}
-
-
-
-.card-grid .admin-card:hover {
-  filter: none !important;
-  transform: scale(1.02);
-  z-index: 2;
-  box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+html[data-theme="dark"] {
+  --background: #0a0a23;
+  --text: #ffffff;
+  --card-bg: #1c1c3c;
+  --border: #444;
+  --accent: #2dd4bf;
 }
